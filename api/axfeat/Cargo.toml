@@ -31,7 +31,7 @@ tls = ["alloc", "axhal/tls", "axruntime/tls", "axtask?/tls"]
 
 # Multi-threading and scheduler
 multitask = ["alloc", "axtask/multitask", "axsync/multitask", "axruntime/multitask"]
-sched_fifo = ["axtask/sched_fifo"]
+sched_fifo = ["axtask/sched_fifo", "irq"]
 sched_rr = ["axtask/sched_rr", "irq"]
 sched_cfs = ["axtask/sched_cfs", "irq"]
 
@@ -59,6 +59,9 @@ log-level-warn = ["axlog/log-level-warn"]
 log-level-info = ["axlog/log-level-info"]
 log-level-debug = ["axlog/log-level-debug"]
 log-level-trace = ["axlog/log-level-trace"]
+
+#dtb
+dtb = ["axruntime/dtb"]
 
 [dependencies]
 axruntime = { path = "../../modules/axruntime" }

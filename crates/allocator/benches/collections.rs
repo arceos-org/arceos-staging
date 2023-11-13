@@ -13,6 +13,7 @@ use rand::{rngs::SmallRng, seq::SliceRandom, RngCore, SeedableRng};
 
 use self::utils::MemoryPool;
 
+
 const POOL_SIZE: usize = 1024 * 1024 * 128;
 
 fn vec_push(n: usize, alloc: &(impl Allocator + Clone)) {

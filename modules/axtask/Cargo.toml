@@ -20,7 +20,7 @@ irq = []
 tls = ["axhal/tls"]
 preempt = ["irq", "percpu?/preempt", "kernel_guard/preempt"]
 
-sched_fifo = ["multitask"]
+sched_fifo = ["multitask", "preempt"]
 sched_rr = ["multitask", "preempt"]
 sched_cfs = ["multitask", "preempt"]
 

@@ -1,5 +1,6 @@
 mod mem;
 mod task;
+mod random;
 
 cfg_fs! {
     mod fs;
@@ -36,6 +37,7 @@ mod stdio {
 pub use self::mem::*;
 pub use self::stdio::*;
 pub use self::task::*;
+pub use self::random::*;
 
 pub use axhal::misc::terminate as ax_terminate;
 pub use axhal::time::{current_time as ax_current_time, TimeValue as AxTimeValue};

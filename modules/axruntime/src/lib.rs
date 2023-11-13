@@ -140,6 +140,22 @@ pub extern "C" fn rust_main(cpu_id: usize, dtb: usize) -> ! {
     #[cfg(feature = "alloc")]
     init_allocator();
 
+    #[cfg(feature = "dtb")]
+    {
+        // Parse fdt for early memory info
+        let dtb_info = match axdtb::parse_dtb(dtb.into()) {
+            Ok(info) => info,
+            Err(err) => panic!("Bad dtb {:?}", err),
+        };
+        info!("DTB info: ==================================");
+        info!("Memory: {:#x}, size: {:#x}", dtb_info.memory_addr, dtb_info.memory_size);
+        info!("Virtio_mmio[{}]:", dtb_info.mmio_regions.len());
+        for r in dtb_info.mmio_regions {
+            info!("\t{:#x}, size: {:#x}",r.0,r.1);
+        }
+        info!("============================================");
+    }
+
     #[cfg(feature = "paging")]
     {
         info!("Initialize kernel page table...");
@@ -187,6 +203,11 @@ pub extern "C" fn rust_main(cpu_id: usize, dtb: usize) -> ! {
 
     while !is_init_ok() {
         core::hint::spin_loop();
+    }
+
+    {
+        let ga = axalloc::global_allocator();
+        info!("Used pages {} / Used bytes {}", ga.used_pages(), ga.used_bytes());
     }
 
     unsafe { main() };

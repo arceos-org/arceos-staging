@@ -17,7 +17,7 @@ repository = "https://github.com/rcore-os/arceos/tree/main/ulib/axstd"
 documentation = "https://rcore-os.github.io/arceos/axstd/index.html"
 
 [features]
-default = []
+default = ["sched_fifo"]
 
 # Multicore
 smp = ["axfeat/smp", "spinlock/smp"]
@@ -68,9 +68,13 @@ log-level-info = ["axfeat/log-level-info"]
 log-level-debug = ["axfeat/log-level-debug"]
 log-level-trace = ["axfeat/log-level-trace"]
 
+#dtb
+dtb = ["axfeat/dtb"]
+
 [dependencies]
 axfeat = { path = "../../api/axfeat" }
 arceos_api = { path = "../../api/arceos_api" }
 axio = { path = "../../crates/axio" }
 axerrno = { path = "../../crates/axerrno" }
 spinlock = { path = "../../crates/spinlock" }
+hashbrown = "0.14"
