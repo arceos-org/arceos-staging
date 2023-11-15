@@ -58,7 +58,7 @@ ifeq ($(QEMU_LOG), y)
 endif
 
 qemu_args-debug := $(qemu_args-y) -s -S
-
+qemu_args-y += -drive if=pflash,file=$(CURDIR)/payload/apps.bin,format=raw,unit=1
 # Do not use KVM for debugging
 ifeq ($(shell uname), Darwin)
   qemu_args-$(ACCEL) += -cpu host -accel hvf

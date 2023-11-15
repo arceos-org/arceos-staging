@@ -25,7 +25,8 @@
 #     - `GW`: Gateway IPv4 address (default is 10.0.2.2 for QEMU user netdev)
 
 # General options
-ARCH ?= x86_64
+#ARCH ?= x86_64
+ARCH ?= riscv64
 PLATFORM ?=
 SMP ?= 1
 MODE ?= release
@@ -33,7 +34,8 @@ LOG ?= warn
 V ?=
 
 # App options
-A ?= apps/helloworld
+#A ?= apps/helloworld
+A ?= apps/loader
 APP ?= $(A)
 FEATURES ?=
 APP_FEATURES ?=

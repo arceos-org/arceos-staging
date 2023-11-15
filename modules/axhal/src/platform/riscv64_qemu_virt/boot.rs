@@ -13,6 +13,9 @@ unsafe fn init_boot_page_table() {
     BOOT_PT_SV39[2] = (0x80000 << 10) | 0xef;
     // 0xffff_ffc0_8000_0000..0xffff_ffc0_c000_0000, VRWX_GAD, 1G block
     BOOT_PT_SV39[0x102] = (0x80000 << 10) | 0xef;
+
+    // 0x0000_0000..0x4000_0000, VRWX_GAD, 1G block
+    BOOT_PT_SV39[0] = (0x00000 << 10) | 0xef;
 }
 
 unsafe fn init_mmu() {
