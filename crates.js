@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["arceos_api","arceos_posix_api","axalloc","axconfig","axdisplay","axdriver","axfeat","axfs","axhal","axlibc","axlog","axnet","axruntime","axstd","axsync","axtask"];
